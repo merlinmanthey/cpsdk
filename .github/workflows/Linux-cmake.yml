@@ -36,6 +36,17 @@ jobs:
       run: ctest -C ${{env.BUILD_TYPE}}
       
     - name: Install
-      run: cmake --install build --prefix instdir 
+      run: cmake --install build --prefix instdir --strip
+      
+    - name: Pack
+      working-directory: instdir
+      run: cmake -E tar cfv ../artifact.7zip --format=7zip .
+
+    - name: Upload
+      uses: actions/upload-artifact@v1
+      with:
+        path: ./artifact.7zip
+        name: artifact.7zip
+
       
       
