@@ -9,4 +9,4 @@ install(TARGETS hello)
 
 
 enable_testing()
-add_test(NAME main COMMAND main)
+add_test(NAME test1 COMMAND hello)
